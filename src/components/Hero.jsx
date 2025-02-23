@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Hero = () => {
   return (
     <div className="w-full">
@@ -60,8 +62,8 @@ const Hero = () => {
                 alleviating poverty among the rural poor, through the use of local resources.
               </p>
               <div className="text-center pt-6">
-                <a 
-                  href="#" 
+                <Link 
+                  to="/about-us" 
                   className="inline-flex items-center bg-[#E8B34B] hover:bg-[#D4A144] text-white px-8 py-3
                     text-base font-semibold uppercase tracking-wide transition-all duration-300
                     hover:shadow-lg transform hover:-translate-y-1"
@@ -80,7 +82,7 @@ const Hero = () => {
                       d="M9 5l7 7-7 7"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

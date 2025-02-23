@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,13 +20,11 @@ const Navbar = () => {
   }, [])
 
   return (
-    <header className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-md' : ''
-    }`}>
-      {/* Top contact bar */}
-      <div className={`bg-green-800 text-white py-2 px-4 hidden sm:block transition-all duration-300 ${
-        isScrolled ? 'opacity-0 h-0 overflow-hidden' : ''
+    <header className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : ''
       }`}>
+      {/* Top contact bar */}
+      <div className={`bg-green-800 text-white py-2 px-4 hidden sm:block transition-all duration-300 ${isScrolled ? 'opacity-0 h-0 overflow-hidden' : ''
+        }`}>
         <div className="container mx-auto flex flex-wrap justify-between items-center text-sm">
           <div className="flex items-center space-x-4">
             <a href="mailto:info@sudi.or.ke" className="hover:text-gray-200 transition-colors duration-300 flex items-center">
@@ -54,14 +53,13 @@ const Navbar = () => {
       </div>
 
       {/* Main Navigation */}
-      <nav className={`bg-white shadow-lg transition-all duration-300 ${
-        isScrolled ? 'py-2' : 'py-0'
-      }`}>
+      <nav className={`bg-white shadow-lg transition-all duration-300 ${isScrolled ? 'py-2' : 'py-0'
+        }`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <a href="/" className="flex items-center">
+              <Link to="/" className="flex items-center">
                 <div className="flex items-center">
                   <span className="text-2xl font-extrabold bg-gradient-to-r from-green-700 to-green-900 bg-clip-text text-transparent">
                     SUDI
@@ -72,31 +70,17 @@ const Navbar = () => {
                     <span className="text-xs text-gray-600 font-medium">Initiative</span>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-4">
-              <NavLink href="#">HOME</NavLink>
-              <div className="relative group">
-                <button className="group-button">
-                  <span>ABOUT US</span>
-                  <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="dropdown-menu">
-                  <div className="py-1">
-                    <DropdownLink href="#">Our History</DropdownLink>
-                    <DropdownLink href="#">Our Team</DropdownLink>
-                    <DropdownLink href="#">Our Mission</DropdownLink>
-                  </div>
-                </div>
-              </div>
-              <NavLink href="#">CORE VALUES</NavLink>
-              <NavLink href="#">OBJECTIVES</NavLink>
-              <NavLink href="#">OUR PROGRAMS</NavLink>
-              <NavLink href="#">GOVERNANCE</NavLink>
+              <NavLink to="/">HOME</NavLink>
+              <NavLink to="/about-us">ABOUT US</NavLink>
+              <NavLink to="#">CORE VALUES</NavLink>
+              <NavLink to="#">OBJECTIVES</NavLink>
+              <NavLink to="#">OUR PROGRAMS</NavLink>
+              <NavLink to="#">GOVERNANCE</NavLink>
             </div>
 
             {/* Mobile menu button */}
@@ -130,12 +114,12 @@ const Navbar = () => {
         {/* Mobile menu */}
         <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:hidden bg-white border-t border-gray-200`}>
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <MobileNavLink href="#">HOME</MobileNavLink>
-            <MobileNavLink href="#">ABOUT US</MobileNavLink>
-            <MobileNavLink href="#">CORE VALUES</MobileNavLink>
-            <MobileNavLink href="#">OBJECTIVES</MobileNavLink>
-            <MobileNavLink href="#">OUR PROGRAMS</MobileNavLink>
-            <MobileNavLink href="#">GOVERNANCE</MobileNavLink>
+            <MobileNavLink to="/">HOME</MobileNavLink>
+            <MobileNavLink to="/about-us">ABOUT US</MobileNavLink>
+            <MobileNavLink to="#">CORE VALUES</MobileNavLink>
+            <MobileNavLink to="#">OBJECTIVES</MobileNavLink>
+            <MobileNavLink to="#">OUR PROGRAMS</MobileNavLink>
+            <MobileNavLink to="#">GOVERNANCE</MobileNavLink>
           </div>
         </div>
       </nav>
@@ -144,31 +128,31 @@ const Navbar = () => {
 }
 
 // Reusable components for navigation links
-const NavLink = ({ href, children }) => (
-  <a 
-    href={href} 
+const NavLink = ({ to, children }) => (
+  <Link
+    to={to}
     className="text-gray-800 hover:text-green-700 px-3 py-2 text-sm font-medium transition-colors duration-300"
   >
     {children}
-  </a>
+  </Link>
 )
 
 const DropdownLink = ({ href, children }) => (
-  <a 
-    href={href} 
+  <a
+    href={href}
     className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700"
   >
     {children}
   </a>
 )
 
-const MobileNavLink = ({ href, children }) => (
-  <a 
-    href={href} 
+const MobileNavLink = ({ to, children }) => (
+  <Link
+    to={to}
     className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50"
   >
     {children}
-  </a>
+  </Link>
 )
 
 export default Navbar 

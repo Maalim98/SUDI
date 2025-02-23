@@ -1,18 +1,20 @@
+import { Link } from 'react-router-dom'
+
 const Footer = () => {
   const quickLinks = [
-    { name: 'HOME', href: '#' },
-    { name: 'ABOUT US', href: '#' },
-    { name: 'VISION', href: '#' },
-    { name: 'MISSION', href: '#' },
-    { name: 'CORE VALUES', href: '#' },
-    { name: 'OBJECTIVES', href: '#' },
+    { name: 'HOME', to: '/' },
+    { name: 'ABOUT US', to: '/about-us' },
+    { name: 'VISION', to: '#' },
+    { name: 'MISSION', to: '#' },
+    { name: 'CORE VALUES', to: '#' },
+    { name: 'OBJECTIVES', to: '#' },
   ];
 
   const programs = [
-    { name: 'PROGRAMS', href: '#' },
-    { name: 'GOVERNANCE', href: '#' },
-    { name: 'FOCUSED AREAS', href: '#' },
-    { name: 'MANAGEMENT', href: '#' },
+    { name: 'PROGRAMS', to: '#' },
+    { name: 'GOVERNANCE', to: '#' },
+    { name: 'FOCUSED AREAS', to: '#' },
+    { name: 'MANAGEMENT', to: '#' },
   ];
 
   const socialLinks = [
@@ -44,14 +46,25 @@ const Footer = () => {
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
-                    <a 
-                      href={link.href}
-                      className="text-gray-300 hover:text-[#9DC08B] transition-colors duration-300 flex items-center group"
-                    >
-                      <span className="transform group-hover:translate-x-2 transition-transform duration-300">
-                        {link.name}
-                      </span>
-                    </a>
+                    {link.to.startsWith('#') ? (
+                      <a 
+                        href={link.to}
+                        className="text-gray-300 hover:text-[#9DC08B] transition-colors duration-300 flex items-center group"
+                      >
+                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">
+                          {link.name}
+                        </span>
+                      </a>
+                    ) : (
+                      <Link 
+                        to={link.to}
+                        className="text-gray-300 hover:text-[#9DC08B] transition-colors duration-300 flex items-center group"
+                      >
+                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">
+                          {link.name}
+                        </span>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -62,14 +75,25 @@ const Footer = () => {
               <ul className="space-y-3">
                 {programs.map((link) => (
                   <li key={link.name}>
-                    <a 
-                      href={link.href}
-                      className="text-gray-300 hover:text-[#9DC08B] transition-colors duration-300 flex items-center group"
-                    >
-                      <span className="transform group-hover:translate-x-2 transition-transform duration-300">
-                        {link.name}
-                      </span>
-                    </a>
+                    {link.to.startsWith('#') ? (
+                      <a 
+                        href={link.to}
+                        className="text-gray-300 hover:text-[#9DC08B] transition-colors duration-300 flex items-center group"
+                      >
+                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">
+                          {link.name}
+                        </span>
+                      </a>
+                    ) : (
+                      <Link 
+                        to={link.to}
+                        className="text-gray-300 hover:text-[#9DC08B] transition-colors duration-300 flex items-center group"
+                      >
+                        <span className="transform group-hover:translate-x-2 transition-transform duration-300">
+                          {link.name}
+                        </span>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
