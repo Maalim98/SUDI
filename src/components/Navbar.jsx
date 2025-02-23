@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isAboutOpen, setIsAboutOpen] = useState(false)
 
   // Add scroll event listener
   useEffect(() => {
@@ -20,11 +21,9 @@ const Navbar = () => {
   }, [])
 
   return (
-    <header className={`w-full fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : ''
-      }`}>
-      {/* Top contact bar */}
-      <div className={`bg-green-800 text-white py-2 px-4 hidden sm:block transition-all duration-300 ${isScrolled ? 'opacity-0 h-0 overflow-hidden' : ''
-        }`}>
+    <header className="w-full fixed top-0 left-0 right-0 z-50">
+      {/* Top contact bar - removed conditional hiding */}
+      <div className="bg-green-800 text-white py-2 px-4 hidden sm:block">
         <div className="container mx-auto flex flex-wrap justify-between items-center text-sm">
           <div className="flex items-center space-x-4">
             <a href="mailto:info@sudi.or.ke" className="hover:text-gray-200 transition-colors duration-300 flex items-center">
@@ -53,8 +52,9 @@ const Navbar = () => {
       </div>
 
       {/* Main Navigation */}
-      <nav className={`bg-white shadow-lg transition-all duration-300 ${isScrolled ? 'py-2' : 'py-0'
-        }`}>
+      <nav className={`bg-white shadow-lg transition-all duration-300 ${
+        isScrolled ? 'py-2' : 'py-4'
+      }`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
@@ -76,7 +76,32 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-4">
               <NavLink to="/">HOME</NavLink>
-              <NavLink to="/about-us">ABOUT US</NavLink>
+              
+              {/* About Us Dropdown - Desktop */}
+              <div className="relative">
+                <NavLink 
+                  to="/about-us" 
+                  className="text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors duration-300 flex items-center"
+                >
+                  ABOUT US
+                  <svg 
+                    className="w-4 h-4 ml-1" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </NavLink>
+                <div className="absolute left-0 mt-0 w-48 opacity-0 invisible hover:opacity-100 hover:visible transition-all duration-200">
+                  <div className="bg-white py-1 border border-gray-200">
+                    <DropdownLink to="/vision">VISION</DropdownLink>
+                    <DropdownLink to="/mission">MISSION</DropdownLink>
+                    <DropdownLink to="/primary-focus-areas">PRIMARY FOCUS AREAS</DropdownLink>
+                  </div>
+                </div>
+              </div>
+
               <NavLink to="#">CORE VALUES</NavLink>
               <NavLink to="#">OBJECTIVES</NavLink>
               <NavLink to="#">OUR PROGRAMS</NavLink>
@@ -115,7 +140,38 @@ const Navbar = () => {
         <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:hidden bg-white border-t border-gray-200`}>
           <div className="px-2 pt-2 pb-3 space-y-1">
             <MobileNavLink to="/">HOME</MobileNavLink>
-            <MobileNavLink to="/about-us">ABOUT US</MobileNavLink>
+            
+            {/* About Us Section - Mobile */}
+            <div>
+              <div 
+                onClick={() => setIsAboutOpen(!isAboutOpen)}
+                className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50 rounded-md cursor-pointer"
+              >
+                <MobileNavLink to="/about-us">ABOUT US</MobileNavLink>
+                <svg 
+                  className={`w-4 h-4 transform transition-transform duration-200 ${
+                    isAboutOpen ? 'rotate-180' : ''
+                  }`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+              <div 
+                className={`transition-all duration-200 ease-in-out ${
+                  isAboutOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+                } overflow-hidden`}
+              >
+                <div className="pl-6 py-2 space-y-1 bg-gray-50">
+                  <MobileNavLink to="/vision">VISION</MobileNavLink>
+                  <MobileNavLink to="/mission">MISSION</MobileNavLink>
+                  <MobileNavLink to="/primary-focus-areas">PRIMARY FOCUS AREAS</MobileNavLink>
+                </div>
+              </div>
+            </div>
+
             <MobileNavLink to="#">CORE VALUES</MobileNavLink>
             <MobileNavLink to="#">OBJECTIVES</MobileNavLink>
             <MobileNavLink to="#">OUR PROGRAMS</MobileNavLink>
@@ -128,28 +184,29 @@ const Navbar = () => {
 }
 
 // Reusable components for navigation links
-const NavLink = ({ to, children }) => (
+const NavLink = ({ to, children, className = '' }) => (
   <Link
     to={to}
-    className="text-gray-800 hover:text-green-700 px-3 py-2 text-sm font-medium transition-colors duration-300"
+    className={`text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors duration-300 ${className}`}
   >
     {children}
   </Link>
 )
 
-const DropdownLink = ({ href, children }) => (
-  <a
-    href={href}
-    className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700"
+// Update DropdownLink to use React Router Link
+const DropdownLink = ({ to, children }) => (
+  <Link
+    to={to}
+    className="block px-4 py-2 text-sm text-gray-700 hover:bg-white hover:text-red-600 border-b border-gray-100 last:border-b-0"
   >
     {children}
-  </a>
+  </Link>
 )
 
 const MobileNavLink = ({ to, children }) => (
   <Link
     to={to}
-    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50"
+    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50 rounded-md"
   >
     {children}
   </Link>
