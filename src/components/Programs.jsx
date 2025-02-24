@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Programs = () => {
   const programs = [
     {
@@ -6,7 +8,7 @@ const Programs = () => {
       description: "To access food security is to have safe and nutritious food on a regular basis – physically, economically, culturally and socially.",
       image: "/src/assets/images/foodsecurity.jpg",
       bgColor: "bg-[#826F47]/95",
-      link: "#"
+      link: "/services/agriculture"
     },
     {
       id: 2,
@@ -14,7 +16,7 @@ const Programs = () => {
       description: "Medical outreaches, nutrition intervention, rehabilitation and Construction of dispensaries, first aid and emergency response during disasters.",
       image: "/src/assets/images/nutrition.jpg",
       bgColor: "bg-[#2E6B3E]/95",
-      link: "#"
+      link: "/services/nutrition"
     },
     {
       id: 3,
@@ -22,7 +24,7 @@ const Programs = () => {
       description: "SUDI shall connect with the Private and Public Institutions and Employers in linking the trainees in and from the Technical and Vocational Education.",
       image: "/src/assets/images/vocational.jpg",
       bgColor: "bg-[#1B4D3E]/95",
-      link: "#"
+      link: "/services/vocational"
     },
     {
       id: 4,
@@ -31,7 +33,7 @@ const Programs = () => {
       image: "/src/assets/images/environment.jpg",
       bgColor: "bg-[#3B5C3B]",
       buttonBg: "bg-[#F0F4F0]/10",
-      link: "#"
+      link: "/services/environmental"
     },
     {
       id: 5,
@@ -40,7 +42,7 @@ const Programs = () => {
       image: "/src/assets/images/sanitation.jpg",
       bgColor: "bg-[#1E4D6B]/95",
       buttonBg: "bg-[#FFF]/10",
-      link: "#"
+      link: "/services/water"
     },
     {
       id: 6,
@@ -49,7 +51,7 @@ const Programs = () => {
       image: "/src/assets/images/youth.jpg",
       bgColor: "bg-[#D4813B]/95",
       buttonBg: "bg-[#FFF]/10",
-      link: "#"
+      link: "/services/youth"
     }
   ];
 
@@ -84,8 +86,8 @@ const Programs = () => {
                 <p className="text-base mb-6 text-white/90 leading-relaxed flex-1">
                   {program.description}
                 </p>
-                <a 
-                  href={program.link}
+                <Link 
+                  to={program.link}
                   className="inline-flex items-center justify-center group/btn mx-auto
                     text-white text-sm font-medium transition-all duration-300"
                 >
@@ -105,7 +107,7 @@ const Programs = () => {
                       d="M17 8l4 4m0 0l-4 4m4-4H3"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           ))}
