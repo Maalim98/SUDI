@@ -112,7 +112,12 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <NavLink to="#">CORE VALUES</NavLink>
+              <NavLink 
+                to="/core-values" 
+                className="text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors duration-300"
+              >
+                CORE VALUES
+              </NavLink>
               <NavLink to="#">OBJECTIVES</NavLink>
               <NavLink to="#">OUR PROGRAMS</NavLink>
               <NavLink to="#">GOVERNANCE</NavLink>

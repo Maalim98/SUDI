@@ -12,6 +12,7 @@ import ScrollToTop from './components/ScrollToTop'
 import Vision from './pages/Vision'
 import Mission from './pages/Mission'
 import FocusAreas from './pages/FocusAreas'
+import CoreValues from './pages/CoreValues'
 import './App.css'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/vision" element={<Vision />} />
           <Route path="/mission" element={<Mission />} />
           <Route path="/focus-areas" element={<FocusAreas />} />
+          <Route path="/core-values" element={<CoreValues />} />
         </Route>
       </Routes>
     </>
