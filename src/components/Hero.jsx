@@ -68,7 +68,7 @@ const Hero = () => {
                     text-base font-semibold uppercase tracking-wide transition-all duration-300
                     hover:shadow-lg transform hover:-translate-y-1"
                 >
-                  Read More
+                  About Us
                   <svg 
                     className="w-5 h-5 ml-2" 
                     fill="none" 
