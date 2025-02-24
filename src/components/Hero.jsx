@@ -4,8 +4,8 @@ const Hero = () => {
   return (
     <div className="w-full">
       {/* Hero section with background image */}
-      <div className="relative h-screen w-full">
-        {/* Background image with warmer overlay */}
+      <div className="relative w-full px-8 pb-16">
+        {/* Background image with overlay */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat w-full"
           style={{
@@ -13,9 +13,9 @@ const Hero = () => {
             backgroundAttachment: 'fixed'
           }}
         />
-
-        {/* Content - improved typography and spacing */}
-        <div className="relative h-full flex flex-col justify-center items-center text-center px-4 pt-20">
+        
+        {/* Content - adjusted top spacing */}
+        <div className="relative flex flex-col justify-center items-center text-center pt-40">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.2] tracking-normal">
             EMPOWERING<br />
             COMMUNITIES FOR A<br />
@@ -45,14 +45,14 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* About section with new neutral colors */}
-      <div id="about" className="bg-[#2F343B] w-full">
-        <div className="container mx-auto px-4 py-24">
+      {/* About section - with straight edges */}
+      <div id="about" className="bg-[#2F343B] w-full" style={{ clipPath: 'none' }}>
+        <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
               About <span className="text-[#E8B34B]">SUDI</span>
             </h2>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-10 space-y-8 shadow-xl">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-10 space-y-8">
               <p className="text-base md:text-lg leading-relaxed text-gray-100">
                 SUDI is a local non-governmental, non-profit organization with its headquarter in Garissa County. SUDI was registered 
                 as an NGO in July 2013 by the Government of Kenya under the NGO Coordination Act 1990.
@@ -69,18 +69,8 @@ const Hero = () => {
                     hover:shadow-lg transform hover:-translate-y-1"
                 >
                   About Us
-                  <svg 
-                    className="w-5 h-5 ml-2" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M9 5l7 7-7 7"
-                    />
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </Link>
               </div>

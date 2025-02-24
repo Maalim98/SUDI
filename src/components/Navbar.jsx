@@ -85,9 +85,9 @@ const Navbar = () => {
               
               {/* About Us Dropdown - Desktop */}
               <div className="relative group">
-                <NavLink 
-                  to="/about-us" 
+                <button 
                   className="text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors duration-300 flex items-center"
+                  onClick={(e) => e.preventDefault()}
                 >
                   ABOUT US
                   <svg 
@@ -98,7 +98,7 @@ const Navbar = () => {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
-                </NavLink>
+                </button>
                 <div className="absolute left-0 mt-0 w-48 bg-white shadow-lg rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   {aboutUsLinks.map((link) => (
                     <Link
