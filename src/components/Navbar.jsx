@@ -6,6 +6,12 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isAboutOpen, setIsAboutOpen] = useState(false)
 
+  const aboutUsLinks = [
+    { name: 'VISION', path: '/vision' },
+    { name: 'MISSION', path: '/mission' },
+    { name: 'PRIMARY FOCUS AREAS', path: '/focus-areas' }
+  ]
+
   // Add scroll event listener
   useEffect(() => {
     const handleScroll = () => {
@@ -78,7 +84,7 @@ const Navbar = () => {
               <NavLink to="/">HOME</NavLink>
               
               {/* About Us Dropdown - Desktop */}
-              <div className="relative">
+              <div className="relative group">
                 <NavLink 
                   to="/about-us" 
                   className="text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors duration-300 flex items-center"
@@ -93,12 +99,16 @@ const Navbar = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </NavLink>
-                <div className="absolute left-0 mt-0 w-48 opacity-0 invisible hover:opacity-100 hover:visible transition-all duration-200">
-                  <div className="bg-white py-1 border border-gray-200">
-                    <DropdownLink to="/vision">VISION</DropdownLink>
-                    <DropdownLink to="/mission">MISSION</DropdownLink>
-                    <DropdownLink to="/primary-focus-areas">PRIMARY FOCUS AREAS</DropdownLink>
-                  </div>
+                <div className="absolute left-0 mt-0 w-48 bg-white shadow-lg rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  {aboutUsLinks.map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-600"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
 

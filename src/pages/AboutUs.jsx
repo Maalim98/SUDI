@@ -4,7 +4,7 @@ const AboutUs = () => {
   const [showForm, setShowForm] = useState(false)
 
   return (
-    <div className="pt-32 pb-20">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4">
         {/* Hero image section */}
         <div className="max-w-5xl mx-auto mb-12 rounded-lg overflow-hidden shadow-xl">
