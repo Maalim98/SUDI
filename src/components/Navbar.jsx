@@ -61,25 +61,25 @@ const Navbar = () => {
 
   return (
     <header className="w-full fixed top-0 left-0 right-0 z-50">
-      {/* Top Bar */}
-      <div className="bg-[#45702D] text-white py-1 px-4 hidden sm:block">
+      {/* Top Bar - Visible on all screens */}
+      <div className="bg-[#45702D] text-white py-1 px-4">
         <div className="container mx-auto flex justify-between items-center text-xs">
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-4">
             <a href="mailto:info@sudi.or.ke" className="hover:text-gray-200 flex items-center">
               <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
               </svg>
-              <span className="hidden md:inline">info@sudi.or.ke</span>
+              <span>info@sudi.or.ke</span>
             </a>
             <a href="tel:+254722407034" className="hover:text-gray-200 flex items-center">
               <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.21-.502l4.435.74a1 1 0 01.684.949V19a1 1 0 01-1 1h-1C7.82 18 2 12.18 2 5V3z" />
               </svg>
-              <span className="hidden md:inline">+254 722407034</span>
+              <span>+254 722407034</span>
             </a>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center">
             <span className="flex items-center">
               <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -94,13 +94,13 @@ const Navbar = () => {
       <nav className={`bg-white shadow-md transition-all duration-300 ${isScrolled ? 'py-1' : 'py-2'}`}>
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
+            {/* Logo with text visible on all screens */}
             <Link to="/" className="flex items-center gap-2">
-              <img src={logoSudi} alt="SUDI Logo" className="h-12 w-auto" />
-              <div className="hidden md:flex flex-col border-l border-[#45702D] pl-2">
-                <span className="text-sm font-semibold text-gray-800">Supreme</span>
-                <span className="text-sm font-semibold text-gray-800">Development</span>
-                <span className="text-sm font-semibold text-gray-800">Initiative</span>
+              <img src={logoSudi} alt="SUDI Logo" className="h-10 w-auto" />
+              <div className="flex flex-col border-l border-[#45702D] pl-2">
+                <span className="text-xs sm:text-sm font-semibold text-gray-800">Supreme</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800">Development</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800">Initiative</span>
               </div>
             </Link>
 
