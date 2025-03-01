@@ -169,23 +169,77 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100">
-            <div className="container mx-auto px-4 py-4">
-              <div className="flex justify-between items-center mb-6">
-                <button onClick={() => setIsMenuOpen(false)} className="text-gray-600 hover:text-green-600">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+        {/* Mobile Menu - Slide from right */}
+        <div 
+          className={`fixed inset-y-0 right-0 transform ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          } w-64 bg-white shadow-lg transition-transform duration-300 ease-in-out z-50 overflow-y-auto`}
+        >
+          <div className="p-4">
+            <div className="flex justify-between items-center mb-6">
+              <button onClick={() => setIsMenuOpen(false)} className="text-gray-600 hover:text-[#45702D]">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <Link to="/" onClick={handleLinkClick}>
+                <img src={logoSudi} alt="SUDI Logo" className="h-10 w-auto" />
+              </Link>
+            </div>
+            <div className="space-y-3">
+              <NavLink
+                to="/"
+                onClick={handleLinkClick}
+                className={({ isActive }) =>
+                  `block py-2 text-sm font-medium ${
+                    isActive ? 'text-green-600' : 'text-gray-700 hover:text-green-600'
+                  }`
+                }
+              >
+                HOME
+              </NavLink>
+              {/* Mobile About Us Dropdown */}
+              <div>
+                <button 
+                  onClick={() => handleDropdownToggle('about')}
+                  className="flex items-center justify-between w-full py-2 text-sm font-medium text-gray-700 hover:text-green-600"
+                >
+                  ABOUT US
+                  <svg 
+                    className={`w-4 h-4 transform transition-transform duration-200 ${activeDropdown === 'about' ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <Link to="/" onClick={handleLinkClick}>
-                  <img src={logoSudi} alt="SUDI Logo" className="h-10 w-auto" />
-                </Link>
+                <div className={`pl-4 space-y-2 ${activeDropdown === 'about' ? 'block' : 'hidden'}`}>
+                  {aboutUsLinks.map((link) => (
+                    <NavLink
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setActiveDropdown(null);
+                      }}
+                      className={({ isActive }) =>
+                        `block py-2 text-sm font-medium ${
+                          isActive 
+                            ? 'text-green-600 bg-green-50' 
+                            : 'text-gray-700 hover:bg-green-50 hover:text-green-600'
+                        }`
+                      }
+                    >
+                      {link.name}
+                    </NavLink>
+                  ))}
+                </div>
               </div>
-              <div className="space-y-3">
+              {mainNavLinks.map((item) => (
                 <NavLink
-                  to="/"
+                  key={item.path}
+                  to={item.path}
                   onClick={handleLinkClick}
                   className={({ isActive }) =>
                     `block py-2 text-sm font-medium ${
@@ -193,63 +247,19 @@ const Navbar = () => {
                     }`
                   }
                 >
-                  HOME
+                  {item.name}
                 </NavLink>
-                {/* Mobile About Us Dropdown */}
-                <div>
-                  <button 
-                    onClick={() => handleDropdownToggle('about')}
-                    className="flex items-center justify-between w-full py-2 text-sm font-medium text-gray-700 hover:text-green-600"
-                  >
-                    ABOUT US
-                    <svg 
-                      className={`w-4 h-4 transform transition-transform duration-200 ${activeDropdown === 'about' ? 'rotate-180' : ''}`}
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <div className={`pl-4 space-y-2 ${activeDropdown === 'about' ? 'block' : 'hidden'}`}>
-                    {aboutUsLinks.map((link) => (
-                      <NavLink
-                        key={link.path}
-                        to={link.path}
-                        onClick={() => {
-                          setIsMenuOpen(false);
-                          setActiveDropdown(null);
-                        }}
-                        className={({ isActive }) =>
-                          `block py-2 text-sm font-medium ${
-                            isActive 
-                              ? 'text-green-600 bg-green-50' 
-                              : 'text-gray-700 hover:bg-green-50 hover:text-green-600'
-                          }`
-                        }
-                      >
-                        {link.name}
-                      </NavLink>
-                    ))}
-                  </div>
-                </div>
-                {mainNavLinks.map((item) => (
-                  <NavLink
-                    key={item.path}
-                    to={item.path}
-                    onClick={handleLinkClick}
-                    className={({ isActive }) =>
-                      `block py-2 text-sm font-medium ${
-                        isActive ? 'text-green-600' : 'text-gray-700 hover:text-green-600'
-                      }`
-                    }
-                  >
-                    {item.name}
-                  </NavLink>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
+        </div>
+
+        {/* Overlay */}
+        {isMenuOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 lg:hidden"
+            onClick={() => setIsMenuOpen(false)}
+          />
         )}
       </nav>
     </header>
