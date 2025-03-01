@@ -1,57 +1,63 @@
 import { Link } from 'react-router-dom'
+import agricultureImg from '/src/assets/images/agriculture.jpg'
+import nutritionImg from '/src/assets/images/nutrition.jpg'
+import waterImg from '/src/assets/images/sanitation.jpg'
+import youthImg from '/src/assets/images/youth.jpg'
+import vocationalImg from '/src/assets/images/vocational.jpg'
+import environmentalImg from '/src/assets/images/environment.jpg'
 
 const Programs = () => {
   const programs = [
     {
       id: 1,
-      title: "Agriculture and Food security",
-      description: "To access food security is to have safe and nutritious food on a regular basis – physically, economically, culturally and socially.",
-      image: "/src/assets/images/foodsecurity.jpg",
+      title: "Agriculture & Food Security",
+      description: "Supporting sustainable farming practices and ensuring food security through modern agricultural techniques.",
+      image: agricultureImg,
       bgColor: "bg-[#826F47]/95",
       link: "/services/agriculture"
     },
     {
       id: 2,
-      title: "Health, Nutrition and HIV/AIDS Services",
-      description: "Medical outreaches, nutrition intervention, rehabilitation and Construction of dispensaries, first aid and emergency response during disasters.",
-      image: "/src/assets/images/nutrition.jpg",
+      title: "Health & Nutrition",
+      description: "Improving community health through comprehensive healthcare services and nutrition programs.",
+      image: nutritionImg,
       bgColor: "bg-[#2E6B3E]/95",
       link: "/services/nutrition"
     },
     {
       id: 3,
-      title: "Technical and Vocational Education and Training",
-      description: "SUDI shall connect with the Private and Public Institutions and Employers in linking the trainees in and from the Technical and Vocational Education.",
-      image: "/src/assets/images/vocational.jpg",
-      bgColor: "bg-[#1B4D3E]/95",
-      link: "/services/vocational"
-    },
-    {
-      id: 4,
-      title: "Environmental protection and conservation",
-      description: "SUDI through its different project will integrate programmes that seek to restore the environment to its natural state through mitigating degradation forces and population pressure exerted.",
-      image: "/src/assets/images/environment.jpg",
-      bgColor: "bg-[#3B5C3B]",
-      buttonBg: "bg-[#F0F4F0]/10",
-      link: "/services/environmental"
-    },
-    {
-      id: 5,
-      title: "Water, Sanitation and Hygiene (WASH)",
-      description: "Through provision of improved water, sanitation and hygiene (WASH) facilities and services, and increased knowledge and capacities SUDI projects will reduce the vulnerability of those households.",
-      image: "/src/assets/images/sanitation.jpg",
+      title: "Water & Sanitation",
+      description: "Providing access to clean water and promoting proper sanitation practices.",
+      image: waterImg,
       bgColor: "bg-[#1E4D6B]/95",
       buttonBg: "bg-[#FFF]/10",
       link: "/services/water"
     },
     {
-      id: 6,
-      title: "Youth and Volunteer Development",
-      description: "SUDI will honor and establish pool of volunteers from unskilled to skilled professional from professional background. SUDI undertakes skills, knowledge and capacities assessments evaluating",
-      image: "/src/assets/images/youth.jpg",
+      id: 4,
+      title: "Youth Development",
+      description: "Empowering youth through education, skills training, and leadership programs.",
+      image: youthImg,
       bgColor: "bg-[#D4813B]/95",
       buttonBg: "bg-[#FFF]/10",
       link: "/services/youth"
+    },
+    {
+      id: 5,
+      title: "Vocational Training",
+      description: "Building practical skills and creating employment opportunities.",
+      image: vocationalImg,
+      bgColor: "bg-[#1B4D3E]/95",
+      link: "/services/vocational"
+    },
+    {
+      id: 6,
+      title: "Environmental Conservation",
+      description: "Protecting natural resources and promoting sustainable environmental practices.",
+      image: environmentalImg,
+      bgColor: "bg-[#3B5C3B]",
+      buttonBg: "bg-[#F0F4F0]/10",
+      link: "/services/environmental"
     }
   ];
 

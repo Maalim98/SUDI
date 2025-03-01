@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
-import logoSudi from '/src/assets/images/logo-sudi.png'
-
 // Only keep MobileNavLink
 const MobileNavLink = ({ to, children, className = '' }) => (
   <NavLink
@@ -96,7 +94,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center h-16">
             {/* Logo with text visible on all screens */}
             <Link to="/" className="flex items-center gap-2">
-              <img src={logoSudi} alt="SUDI Logo" className="h-10 w-auto" />
+              <img src="/images/logo-sudi.png" alt="SUDI Logo" className="h-10 w-auto" />
               <div className="flex flex-col border-l border-[#45702D] pl-2">
                 <span className="text-xs sm:text-sm font-semibold text-gray-800">Supreme</span>
                 <span className="text-xs sm:text-sm font-semibold text-gray-800">Development</span>
@@ -183,7 +181,7 @@ const Navbar = () => {
                 </svg>
               </button>
               <Link to="/" onClick={handleLinkClick}>
-                <img src={logoSudi} alt="SUDI Logo" className="h-10 w-auto" />
+                <img src="/images/logo-sudi.png" alt="SUDI Logo" className="h-10 w-auto" />
               </Link>
             </div>
             <div className="space-y-3">
