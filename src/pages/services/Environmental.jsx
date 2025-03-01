@@ -8,9 +8,9 @@ const Environmental = () => {
 
         {/* Hero Image */}
         <div className="max-w-5xl mx-auto mb-12 rounded-lg overflow-hidden shadow-xl">
-          <img 
-            src="/src/assets/images/environment.jpg" 
-            alt="Environmental Conservation" 
+          <img
+            src="/src/assets/images/environment.jpg"
+            alt="Environmental Conservation"
             className="w-full h-[400px] object-cover object-center"
           />
         </div>

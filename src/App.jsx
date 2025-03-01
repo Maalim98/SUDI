@@ -13,6 +13,9 @@ import Vision from './pages/Vision'
 import Mission from './pages/Mission'
 import FocusAreas from './pages/FocusAreas'
 import CoreValues from './pages/CoreValues'
+import Objectives from './pages/Objectives'
+import Programs from './pages/Programs'
+import Governance from './pages/Governance'
 import './App.css'
 
 function App() {
@@ -33,6 +36,9 @@ function App() {
           <Route path="/mission" element={<Mission />} />
           <Route path="/focus-areas" element={<FocusAreas />} />
           <Route path="/core-values" element={<CoreValues />} />
+          <Route path="/objectives" element={<Objectives />} />
+          <Route path="/programs" element={<Programs />} />
+          <Route path="/governance" element={<Governance />} />
         </Route>
       </Routes>
     </>

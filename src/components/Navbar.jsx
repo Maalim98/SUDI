@@ -26,6 +26,12 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Add click handler for dropdown links
+  const handleDropdownClick = () => {
+    setIsAboutOpen(false)
+    setIsMenuOpen(false) // Also close mobile menu if open
+  }
+
   return (
     <header className="w-full fixed top-0 left-0 right-0 z-50">
       {/* Top contact bar - removed conditional hiding */}
@@ -65,33 +71,39 @@ const Navbar = () => {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="flex items-center">
-                <div className="flex items-center">
-                  <span className="text-2xl font-extrabold bg-gradient-to-r from-green-700 to-green-900 bg-clip-text text-transparent">
-                    SUDI
-                  </span>
-                  <div className="hidden md:flex flex-col ml-2 border-l-2 border-green-700 pl-2">
-                    <span className="text-xs text-gray-600 font-medium">Supreme</span>
-                    <span className="text-xs text-gray-600 font-medium">Development</span>
-                    <span className="text-xs text-gray-600 font-medium">Initiative</span>
-                  </div>
+              <Link to="/" className="flex items-center gap-3">
+                <img 
+                  src="/src/assets/images/logo-sudi.png" 
+                  alt="SUDI Logo" 
+                  className="h-32 w-auto"
+                />
+                <div className="hidden md:flex flex-col border-l-2 border-green-700 pl-3">
+                  <span className="text-lg font-semibold text-gray-800">Supreme</span>
+                  <span className="text-lg font-semibold text-gray-800">Development</span>
+                  <span className="text-lg font-semibold text-gray-800">Initiative</span>
                 </div>
               </Link>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-4">
-              <NavLink to="/">HOME</NavLink>
+            <div className="hidden lg:flex items-center space-x-6">
+              <NavLink to="/" className="text-base font-semibold">HOME</NavLink>
               
               {/* About Us Dropdown - Desktop */}
-              <div className="relative group">
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsAboutOpen(true)}
+                onMouseLeave={() => setIsAboutOpen(false)}
+              >
                 <button 
-                  className="text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors duration-300 flex items-center"
-                  onClick={(e) => e.preventDefault()}
+                  className="text-gray-800 hover:text-red-600 px-3 py-2 text-base font-semibold transition-colors duration-300 flex items-center"
+                  onClick={() => setIsAboutOpen(!isAboutOpen)}
                 >
                   ABOUT US
                   <svg 
-                    className="w-4 h-4 ml-1" 
+                    className={`w-5 h-5 ml-1 transform transition-transform duration-200 ${
+                      isAboutOpen ? 'rotate-180' : ''
+                    }`}
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -99,11 +111,18 @@ const Navbar = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className="absolute left-0 mt-0 w-48 bg-white shadow-lg rounded-b-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <div 
+                  className={`absolute left-0 mt-0 w-48 bg-white shadow-lg rounded-b-lg transition-all duration-200 ${
+                    isAboutOpen 
+                      ? 'opacity-100 visible translate-y-0' 
+                      : 'opacity-0 invisible -translate-y-1'
+                  }`}
+                >
                   {aboutUsLinks.map((link) => (
                     <Link
                       key={link.path}
                       to={link.path}
+                      onClick={handleDropdownClick}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-600"
                     >
                       {link.name}
@@ -114,13 +133,28 @@ const Navbar = () => {
 
               <NavLink 
                 to="/core-values" 
-                className="text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors duration-300"
+                className="text-gray-800 hover:text-red-600 px-3 py-2 text-base font-semibold transition-colors duration-300"
               >
                 CORE VALUES
               </NavLink>
-              <NavLink to="#">OBJECTIVES</NavLink>
-              <NavLink to="#">OUR PROGRAMS</NavLink>
-              <NavLink to="#">GOVERNANCE</NavLink>
+              <NavLink 
+                to="/objectives" 
+                className="text-base font-semibold"
+              >
+                OBJECTIVES
+              </NavLink>
+              <NavLink 
+                to="/programs" 
+                className="text-base font-semibold"
+              >
+                OUR PROGRAMS
+              </NavLink>
+              <NavLink 
+                to="/governance" 
+                className="text-base font-semibold"
+              >
+                GOVERNANCE
+              </NavLink>
             </div>
 
             {/* Mobile menu button */}
