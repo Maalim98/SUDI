@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
-import logoSudi from '../assets/images/logo-sudi.png'
+import logoSudi from '/src/assets/images/logo-sudi.png'
 
 // Only keep MobileNavLink
 const MobileNavLink = ({ to, children, className = '' }) => (
