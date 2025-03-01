@@ -49,8 +49,8 @@ const Objectives = () => {
 
           <div className="space-y-6">
             {objectives.map((objective, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
               >
                 <div className="flex items-start gap-6">

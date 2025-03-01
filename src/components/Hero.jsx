@@ -5,59 +5,46 @@ const Hero = () => {
   return (
     <>
       {/* Hero section */}
-      <section 
-        className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-video mt-[100px]"
-        style={{
-          backgroundImage: `url(${bgHero})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          objectFit: 'cover',
-          objectPosition: 'center'
-        }}
-      >
-        {/* Background Image */}
+      <section className="relative w-full min-h-[80vh] mt-[72px]">
+        {/* Background Image with Overlay */}
         <div 
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: `url(${bgHero})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bgHero})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            objectFit: 'cover',
-            objectPosition: 'center'
+            backgroundRepeat: 'no-repeat'
           }}
         />
-        
-        {/* Subtle Overlay */}
-        <div className="absolute inset-0 bg-black/20" />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-center -mt-[100px]">
-          <div className="container mx-auto px-4 md:px-8">
+        <div className="relative z-10 h-full flex flex-col justify-center">
+          <div className="container mx-auto px-4 py-20">
             <div className="max-w-3xl">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-                <span className="block text-white drop-shadow-md">EMPOWERING</span>
-                <span className="block text-white drop-shadow-md">COMMUNITIES FOR A</span>
-                <span className="block text-white drop-shadow-md">BETTER TOMORROW</span>
+                <span className="block text-white drop-shadow-md mb-2">EMPOWERING</span>
+                <span className="block text-white drop-shadow-md mb-2">COMMUNITIES FOR A</span>
+                <span className="block text-[#F9B872] drop-shadow-md">BETTER TOMORROW</span>
               </h1>
               
               <p className="text-lg sm:text-xl text-white mb-12 max-w-2xl drop-shadow-md">
                 Supporting sustainable development and peace in Garissa County through community-driven initiatives
               </p>
 
-              <div className="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row">
+              <div className="flex flex-wrap gap-4">
                 <Link
-                  to="/programs"
-                  className="inline-block bg-[#C17F59] text-white px-8 py-3 rounded-md
-                    text-lg font-semibold hover:bg-[#A66B48] transition duration-300 shadow-lg"
+                  to="/about-us"
+                  className="inline-block bg-[#C17F59] text-white px-8 py-3 
+                    rounded-md text-lg font-semibold hover:bg-[#A66B48] 
+                    transition duration-300 shadow-lg"
                 >
-                  Our Programs
+                  Learn More
                 </Link>
                 <Link
                   to="/contact"
                   className="inline-block bg-white/20 backdrop-blur-sm text-white px-8 py-3 
-                    rounded-md text-lg font-semibold hover:bg-white/30 transition duration-300 shadow-lg"
+                    rounded-md text-lg font-semibold hover:bg-white/30 
+                    transition duration-300 shadow-lg"
                 >
                   Get Involved
                 </Link>
@@ -91,8 +78,8 @@ const Hero = () => {
                     rounded-md shadow-lg"
                 >
                   About Us
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </Link>
               </div>
