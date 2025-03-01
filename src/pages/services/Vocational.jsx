@@ -1,4 +1,4 @@
-// import vocationalImage from '../../assets/images/vocational.jpg'
+import vocationalImage from '../../assets/images/vocational.jpg'
 // import trainingImage from '../../assets/images/training.jpg'
 
 const Vocational = () => {
@@ -10,13 +10,13 @@ const Vocational = () => {
         </h1>
 
         {/* Hero Image */}
-        {/* <div className="max-w-5xl mx-auto mb-12 rounded-lg overflow-hidden shadow-xl">
+        <div className="max-w-5xl mx-auto mb-12 rounded-lg overflow-hidden shadow-xl">
           <img
             src={vocationalImage}
             alt="Vocational Training"
             className="w-full h-[400px] object-cover object-center"
           />
-        </div> */}
+        </div>
 
         <div className="max-w-4xl mx-auto space-y-8">
           <p className="text-lg leading-relaxed text-gray-700">

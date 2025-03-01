@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import nutritionImage from '../../assets/images/nutrition.jpg'
 
 const Nutrition = () => {
   const [formData, setFormData] = useState({
@@ -42,7 +43,7 @@ const Nutrition = () => {
         {/* Hero Image */}
         <div className="max-w-5xl mx-auto mb-12 rounded-lg overflow-hidden shadow-xl">
           <img 
-            src="/src/assets/images/nutrition.jpg" 
+            src={nutritionImage}
             alt="Health and Nutrition Services" 
             className="w-full h-[400px] object-cover object-center"
           />
