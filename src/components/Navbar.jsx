@@ -1,54 +1,79 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import logoSudi from '../assets/images/logo-sudi.png'
+
+// Only keep MobileNavLink
+const MobileNavLink = ({ to, children, className = '' }) => (
+  <NavLink
+    to={to}
+    className={({ isActive }) => `block py-2 text-lg ${
+      isActive ? 'text-green-600 font-semibold' : 'text-gray-600'
+    } ${className}`}
+  >
+    {children}
+  </NavLink>
+)
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isAboutOpen, setIsAboutOpen] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState(null)
 
   const aboutUsLinks = [
     { name: 'VISION', path: '/vision' },
     { name: 'MISSION', path: '/mission' },
-    { name: 'PRIMARY FOCUS AREAS', path: '/focus-areas' }
+    { name: 'PRIMARY FOCUS AREAS', path: '/focus-areas' },
+    { name: 'CORE VALUES', path: '/core-values' },
+    { name: 'OBJECTIVES', path: '/objectives' }
   ]
+
+  const mainNavLinks = [
+    { name: 'OUR PROGRAMS', path: '/programs' },
+    { name: 'GOVERNANCE', path: '/governance' }
+  ]
+
+  // Close menu when clicking a link
+  const handleLinkClick = () => {
+    setIsMenuOpen(false)
+    setActiveDropdown(null)
+  }
+
+  // Handle dropdown toggle
+  const handleDropdownToggle = (dropdownName) => {
+    if (activeDropdown === dropdownName) {
+      setActiveDropdown(null)
+    } else {
+      setActiveDropdown(dropdownName)
+    }
+  }
 
   // Add scroll event listener
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
+      setIsScrolled(window.scrollY > 0)
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Add click handler for dropdown links
-  const handleDropdownClick = () => {
-    setIsAboutOpen(false)
-    setIsMenuOpen(false) // Also close mobile menu if open
-  }
-
   return (
     <header className="w-full fixed top-0 left-0 right-0 z-50">
-      {/* Top contact bar - removed conditional hiding */}
-      <div className="bg-green-800 text-white py-2 px-4 hidden sm:block">
-        <div className="container mx-auto flex flex-wrap justify-between items-center text-sm">
-          <div className="flex items-center space-x-4">
-            <a href="mailto:info@sudi.or.ke" className="hover:text-gray-200 transition-colors duration-300 flex items-center">
-              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+      {/* Top Bar - reduced text size */}
+      <div className="bg-green-800 text-white py-1 px-4 hidden sm:block">
+        <div className="container mx-auto flex justify-between items-center text-xs">
+          <div className="flex items-center space-x-6">
+            <a href="mailto:info@sudi.or.ke" className="hover:text-gray-200 flex items-center">
+              <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
               </svg>
               <span className="hidden md:inline">info@sudi.or.ke</span>
             </a>
-            <a href="tel:+254722407034" className="hover:text-gray-200 transition-colors duration-300 flex items-center">
-              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <a href="tel:+254722407034" className="hover:text-gray-200 flex items-center">
+              <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
               <span className="hidden md:inline">+254 722407034</span>
@@ -65,47 +90,124 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Main Navigation */}
-      <nav className={`bg-white shadow-lg transition-all duration-300 ${
-        isScrolled ? 'py-2' : 'py-4'
-      }`}>
+      {/* Main Navigation - adjusted heights and text sizes */}
+      <nav className={`bg-white shadow-lg transition-all duration-300 ${isScrolled ? 'py-1' : 'py-2'}`}>
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center h-20">
-            {/* Logo */}
-            <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="flex items-center gap-3">
-                <img 
-                  src={logoSudi}
-                  alt="SUDI Logo"
-                  className="h-32 w-auto"
-                />
-                <div className="hidden md:flex flex-col border-l-2 border-green-700 pl-3">
-                  <span className="text-lg font-semibold text-gray-800">Supreme</span>
-                  <span className="text-lg font-semibold text-gray-800">Development</span>
-                  <span className="text-lg font-semibold text-gray-800">Initiative</span>
+          <div className="flex justify-between items-center h-16">
+            {/* Logo - Make it clickable */}
+            <Link to="/" className="flex items-center gap-1">
+              <img src={logoSudi} alt="SUDI Logo" className="h-16 w-auto" />
+              <div className="hidden md:flex flex-col border-l border-green-700 pl-1">
+                <span className="text-sm font-semibold text-gray-800">Supreme</span>
+                <span className="text-sm font-semibold text-gray-800">Development</span>
+                <span className="text-sm font-semibold text-gray-800">Initiative</span>
+              </div>
+            </Link>
+
+            {/* Desktop Navigation - adjusted text sizes and spacing */}
+            <div className="hidden lg:flex items-center space-x-6 ml-4">
+              <NavLink 
+                to="/" 
+                className={({ isActive }) => 
+                  `text-sm font-medium px-2 ${isActive ? 'text-green-600' : 'text-gray-700 hover:text-green-600'}`
+                }
+              >
+                HOME
+              </NavLink>
+              
+              {/* About Us Dropdown - adjusted sizes */}
+              <div className="relative group">
+                <button 
+                  className="text-sm font-medium text-gray-700 hover:text-green-600 flex items-center px-2"
+                >
+                  ABOUT US
+                  <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute left-0 mt-1 w-44 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  {aboutUsLinks.map((link) => (
+                    <NavLink
+                      key={link.path}
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `block px-3 py-2 text-xs ${
+                          isActive 
+                            ? 'text-green-600 bg-green-50' 
+                            : 'text-gray-700 hover:bg-green-50 hover:text-green-600'
+                        }`
+                      }
+                    >
+                      {link.name}
+                    </NavLink>
+                  ))}
                 </div>
-              </Link>
+              </div>
+
+              {/* Main nav links */}
+              {mainNavLinks.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) => 
+                    `text-sm font-medium px-2 ${isActive ? 'text-green-600' : 'text-gray-700 hover:text-green-600'}`
+                  }
+                >
+                  {item.name}
+                </NavLink>
+              ))}
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6">
-              <NavLink to="/" className="text-base font-semibold">HOME</NavLink>
-              
-              {/* About Us Dropdown - Desktop */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setIsAboutOpen(true)}
-                onMouseLeave={() => setIsAboutOpen(false)}
+            {/* Mobile menu button - adjusted size */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden p-1 rounded-md text-gray-600 hover:text-green-600"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu - changed to slide from right */}
+        <div 
+          className={`fixed inset-y-0 right-0 transform ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          } w-60 bg-white shadow-lg transition-transform duration-300 ease-in-out z-50`}
+        >
+          <div className="p-4">
+            <div className="flex justify-between items-center mb-6">
+              <button onClick={() => setIsMenuOpen(false)} className="text-gray-600 hover:text-green-600">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <Link to="/" onClick={handleLinkClick}>
+                <img src={logoSudi} alt="SUDI Logo" className="h-10 w-auto" />
+              </Link>
+            </div>
+            <div className="space-y-3">
+              <NavLink
+                to="/"
+                onClick={handleLinkClick}
+                className={({ isActive }) =>
+                  `block py-2 text-sm font-medium ${
+                    isActive ? 'text-green-600' : 'text-gray-700 hover:text-green-600'
+                  }`
+                }
               >
+                HOME
+              </NavLink>
+              {/* Mobile About Us Dropdown */}
+              <div>
                 <button 
-                  className="text-gray-800 hover:text-red-600 px-3 py-2 text-base font-semibold transition-colors duration-300 flex items-center"
-                  onClick={() => setIsAboutOpen(!isAboutOpen)}
+                  onClick={() => handleDropdownToggle('about')}
+                  className="flex items-center justify-between w-full py-2 text-sm font-medium text-gray-700 hover:text-green-600"
                 >
                   ABOUT US
                   <svg 
-                    className={`w-5 h-5 ml-1 transform transition-transform duration-200 ${
-                      isAboutOpen ? 'rotate-180' : ''
-                    }`}
+                    className={`w-4 h-4 transform transition-transform duration-200 ${activeDropdown === 'about' ? 'rotate-180' : ''}`}
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -113,151 +215,63 @@ const Navbar = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div 
-                  className={`absolute left-0 mt-0 w-48 bg-white shadow-lg rounded-b-lg transition-all duration-200 ${
-                    isAboutOpen 
-                      ? 'opacity-100 visible translate-y-0' 
-                      : 'opacity-0 invisible -translate-y-1'
-                  }`}
-                >
+                <div className={`pl-4 space-y-2 ${activeDropdown === 'about' ? 'block' : 'hidden'}`}>
                   {aboutUsLinks.map((link) => (
-                    <Link
+                    <NavLink
                       key={link.path}
                       to={link.path}
-                      onClick={handleDropdownClick}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-600"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setActiveDropdown(null);
+                      }}
+                      className={({ isActive }) =>
+                        `block py-2 text-sm font-medium ${
+                          isActive 
+                            ? 'text-green-600 bg-green-50' 
+                            : 'text-gray-700 hover:bg-green-50 hover:text-green-600'
+                        }`
+                      }
                     >
                       {link.name}
-                    </Link>
+                    </NavLink>
                   ))}
                 </div>
               </div>
-
-              <NavLink 
-                to="/core-values" 
-                className="text-gray-800 hover:text-red-600 px-3 py-2 text-base font-semibold transition-colors duration-300"
-              >
-                CORE VALUES
-              </NavLink>
-              <NavLink 
-                to="/objectives" 
-                className="text-base font-semibold"
-              >
-                OBJECTIVES
-              </NavLink>
-              <NavLink 
-                to="/programs" 
-                className="text-base font-semibold"
-              >
-                OUR PROGRAMS
-              </NavLink>
-              <NavLink 
-                to="/governance" 
-                className="text-base font-semibold"
-              >
-                GOVERNANCE
-              </NavLink>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="lg:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="mobile-menu-button"
-                aria-label="Toggle menu"
-              >
-                <svg
-                  className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+              {mainNavLinks.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  onClick={handleLinkClick}
+                  className={({ isActive }) =>
+                    `block py-2 text-sm font-medium ${
+                      isActive ? 'text-green-600' : 'text-gray-700 hover:text-green-600'
+                    }`
+                  }
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                <svg
-                  className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+                  {item.name}
+                </NavLink>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Mobile menu */}
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:hidden bg-white border-t border-gray-200`}>
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <MobileNavLink to="/">HOME</MobileNavLink>
-            
-            {/* About Us Section - Mobile */}
-            <div>
-              <div 
-                onClick={() => setIsAboutOpen(!isAboutOpen)}
-                className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50 rounded-md cursor-pointer"
-              >
-                <MobileNavLink to="/about-us">ABOUT US</MobileNavLink>
-                <svg 
-                  className={`w-4 h-4 transform transition-transform duration-200 ${
-                    isAboutOpen ? 'rotate-180' : ''
-                  }`}
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-              <div 
-                className={`transition-all duration-200 ease-in-out ${
-                  isAboutOpen ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
-                } overflow-hidden`}
-              >
-                <div className="pl-6 py-2 space-y-1 bg-gray-50">
-                  <MobileNavLink to="/vision">VISION</MobileNavLink>
-                  <MobileNavLink to="/mission">MISSION</MobileNavLink>
-                  <MobileNavLink to="/primary-focus-areas">PRIMARY FOCUS AREAS</MobileNavLink>
-                </div>
-              </div>
-            </div>
-
-            <MobileNavLink to="#">CORE VALUES</MobileNavLink>
-            <MobileNavLink to="#">OBJECTIVES</MobileNavLink>
-            <MobileNavLink to="#">OUR PROGRAMS</MobileNavLink>
-            <MobileNavLink to="#">GOVERNANCE</MobileNavLink>
-          </div>
-        </div>
+        {/* Overlay */}
+        {isMenuOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 lg:hidden"
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
       </nav>
     </header>
   )
 }
 
-// Reusable components for navigation links
-const NavLink = ({ to, children, className = '' }) => (
-  <Link
-    to={to}
-    className={`text-gray-800 hover:text-red-600 px-3 py-2 text-sm font-medium transition-colors duration-300 ${className}`}
-  >
-    {children}
-  </Link>
-)
-
-// Update DropdownLink to use React Router Link
+// Only keep DropdownLink
 const DropdownLink = ({ to, children }) => (
   <Link
     to={to}
     className="block px-4 py-2 text-sm text-gray-700 hover:bg-white hover:text-red-600 border-b border-gray-100 last:border-b-0"
-  >
-    {children}
-  </Link>
-)
-
-const MobileNavLink = ({ to, children }) => (
-  <Link
-    to={to}
-    className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-green-700 hover:bg-green-50 rounded-md"
   >
     {children}
   </Link>
