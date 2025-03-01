@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+import logoSudi from '../assets/images/logo-sudi.png'
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -73,8 +75,8 @@ const Navbar = () => {
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex items-center gap-3">
                 <img 
-                  src="/src/assets/images/logo-sudi.png" 
-                  alt="SUDI Logo" 
+                  src={logoSudi}
+                  alt="SUDI Logo"
                   className="h-32 w-auto"
                 />
                 <div className="hidden md:flex flex-col border-l-2 border-green-700 pl-3">

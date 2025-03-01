@@ -7,13 +7,13 @@ const FocusAreas = () => {
         </h1>
 
         {/* Hero Image */}
-        <div className="max-w-5xl mx-auto mb-12 rounded-lg overflow-hidden shadow-xl">
+        {/* <div className="max-w-5xl mx-auto mb-12 rounded-lg overflow-hidden shadow-xl">
           <img 
-            src="/src/assets/images/focusarea.jpg"
+            src={focusImage}
             alt="SUDI Focus Areas" 
             className="w-full h-[400px] object-cover object-center"
           />
-        </div>
+        </div> */}
 
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="grid md:grid-cols-2 gap-6">

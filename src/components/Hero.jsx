@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import bgHero from '../assets/images/bg-hero.jpg'
 
 const Hero = () => {
   return (
@@ -9,7 +10,7 @@ const Hero = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat w-full"
           style={{
-            backgroundImage: 'linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)), url("/src/assets/images/bg-hero.jpg")',
+            backgroundImage: `linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)), url(${bgHero})`,
             backgroundAttachment: 'fixed'
           }}
         />

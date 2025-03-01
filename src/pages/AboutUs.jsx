@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import communityImage from '../assets/images/community.jpg'
+import conferenceImage from '../assets/images/conference.jpg'
 
 const AboutUs = () => {
   const [showForm, setShowForm] = useState(false)
@@ -9,8 +11,8 @@ const AboutUs = () => {
         {/* Hero image section */}
         <div className="max-w-5xl mx-auto mb-12 rounded-lg overflow-hidden shadow-xl">
           <img 
-            src="/src/assets/images/community.jpg" 
-            alt="SUDI volunteers delivering food aid" 
+            src={communityImage}
+            alt="Community Work"
             className="w-full h-[400px] object-cover object-center"
           />
         </div>
