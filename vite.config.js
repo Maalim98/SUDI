@@ -3,14 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react({
-      // Disable SWC as it's causing issues with Vercel deployment
-      babel: {
-        plugins: []
-      }
-    })
-  ],
+  plugins: [react()],
   // Add base URL configuration
   base: '/',
   // Specify build configuration
