@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom'
-import images from '../constants/images'
+import foodsecurityImg from '../assets/images/foodsecurity.jpg'
+import nutritionImg from '../assets/images/nutrition.jpg'
+import sanitationImg from '../assets/images/sanitation.jpg'
+import youthImg from '../assets/images/youth.jpg'
+import vocationalImg from '../assets/images/vocational.jpg'
+import environmentImg from '../assets/images/environment.jpg'
 
 const Programs = () => {
   const programs = [
@@ -7,7 +12,7 @@ const Programs = () => {
       id: 1,
       title: "Agriculture and Food security",
       description: "To access food security is to have safe and nutritious food on a regular basis – physically, economically, culturally and socially.",
-      image: images.foodsecurity,
+      image: foodsecurityImg,
       bgColor: "bg-[#826F47]/95",
       link: "/services/agriculture"
     },
@@ -15,7 +20,7 @@ const Programs = () => {
       id: 2,
       title: "Health, Nutrition and HIV/AIDS Services",
       description: "Medical outreaches, nutrition intervention, rehabilitation and Construction of dispensaries, first aid and emergency response during disasters.",
-      image: images.nutrition,
+      image: nutritionImg,
       bgColor: "bg-[#2E6B3E]/95",
       link: "/services/nutrition"
     },
@@ -23,7 +28,7 @@ const Programs = () => {
       id: 3,
       title: "Water, Sanitation and Hygiene (WASH)",
       description: "Through provision of improved water, sanitation and hygiene (WASH) facilities and services, and increased knowledge and capacities SUDI projects will reduce the vulnerability of those households.",
-      image: images.sanitation,
+      image: sanitationImg,
       bgColor: "bg-[#1E4D6B]/95",
       buttonBg: "bg-[#FFF]/10",
       link: "/services/water"
@@ -32,7 +37,7 @@ const Programs = () => {
       id: 4,
       title: "Youth and Volunteer Development",
       description: "SUDI will honor and establish pool of volunteers from unskilled to skilled professional from professional background. SUDI undertakes skills, knowledge and capacities assessments evaluating",
-      image: images.youth,
+      image: youthImg,
       bgColor: "bg-[#D4813B]/95",
       buttonBg: "bg-[#FFF]/10",
       link: "/services/youth"
@@ -41,7 +46,7 @@ const Programs = () => {
       id: 5,
       title: "Technical and Vocational Education and Training",
       description: "SUDI shall connect with the Private and Public Institutions and Employers in linking the trainees in and from the Technical and Vocational Education.",
-      image: images.vocational,
+      image: vocationalImg,
       bgColor: "bg-[#1B4D3E]/95",
       link: "/services/vocational"
     },
@@ -49,7 +54,7 @@ const Programs = () => {
       id: 6,
       title: "Environmental protection and conservation",
       description: "SUDI through its different project will integrate programmes that seek to restore the environment to its natural state through mitigating degradation forces and population pressure exerted.",
-      image: images.environment,
+      image: environmentImg,
       bgColor: "bg-[#3B5C3B]",
       buttonBg: "bg-[#F0F4F0]/10",
       link: "/services/environmental"

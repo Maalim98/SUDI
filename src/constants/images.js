@@ -1,17 +1,12 @@
-import foodsecurityImg from '../assets/images/foodsecurity.jpg'
-import nutritionImg from '../assets/images/nutrition.jpg'
-import sanitationImg from '../assets/images/sanitation.jpg'
-import youthImg from '../assets/images/youth.jpg'
-import vocationalImg from '../assets/images/vocational.jpg'
-import environmentImg from '../assets/images/environment.jpg'
-
 export const images = {
-  foodsecurity: foodsecurityImg,
-  nutrition: nutritionImg,
-  sanitation: sanitationImg,
-  youth: youthImg,
-  vocational: vocationalImg,
-  environment: environmentImg
+  foodsecurity: '/images/foodsecurity.jpg',
+  nutrition: '/images/nutrition.jpg',
+  sanitation: '/images/sanitation.jpg',
+  youth: '/images/youth.jpg',
+  vocational: '/images/vocational.jpg',
+  environment: '/images/environment.jpg',
+  logo: '/images/logo-sudi.png',
+  hero: '/images/bg-hero.jpg'
 }
 
 export default images 
