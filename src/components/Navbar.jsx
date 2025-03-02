@@ -54,8 +54,19 @@ const Navbar = () => {
     }
 
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    
+    // Prevent body scroll when menu is open
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      document.body.style.overflow = 'auto'
+    }
+  }, [isMenuOpen])
 
   return (
     <header className="w-full fixed top-0 left-0 right-0 z-50">
@@ -179,11 +190,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Compact Mobile Menu - Semi-transparent overlay */}
+        {/* Compact Mobile Menu - Full screen overlay to prevent blurry background */}
         <div 
-          className={`fixed inset-y-0 right-0 transform ${
+          className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          } w-[250px] bg-white shadow-lg transition-transform duration-300 ease-in-out z-50`}
+          }`}
         >
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between p-4 border-b">
@@ -203,7 +214,7 @@ const Navbar = () => {
                 to="/"
                 onClick={() => setIsMenuOpen(false)}
                 className={({ isActive }) =>
-                  `block px-4 py-2 text-sm font-medium ${
+                  `block px-4 py-3 my-2 text-lg font-medium ${
                     isActive ? 'text-[#45702D] bg-green-50' : 'text-gray-700 hover:bg-green-50 hover:text-[#45702D]'
                   }`
                 }
@@ -214,11 +225,11 @@ const Navbar = () => {
               <div className="px-4 py-2">
                 <button 
                   onClick={() => setActiveDropdown(activeDropdown === 'about' ? null : 'about')}
-                  className="flex items-center justify-between w-full text-sm font-medium text-gray-700 hover:text-[#45702D] hover:bg-green-50 py-2 px-0"
+                  className="flex items-center justify-between w-full text-lg font-medium text-gray-700 hover:text-[#45702D] hover:bg-green-50 py-3 px-0 my-2 rounded"
                 >
                   ABOUT US
                   <svg 
-                    className={`w-4 h-4 transition-transform duration-200 ${
+                    className={`w-5 h-5 transition-transform duration-200 ${
                       activeDropdown === 'about' ? 'rotate-180' : ''
                     }`}
                     fill="none" 
@@ -229,18 +240,18 @@ const Navbar = () => {
                   </svg>
                 </button>
                 
-                <div className={`mt-2 space-y-1 ${activeDropdown === 'about' ? 'block' : 'hidden'}`}>
+                <div className={`mt-2 space-y-3 ${activeDropdown === 'about' ? 'block' : 'hidden'}`}>
                   {aboutUsLinks.map((link) => (
                     <NavLink
                       key={link.path}
                       to={link.path}
                       onClick={() => setIsMenuOpen(false)}
                       className={({ isActive }) =>
-                        `block pl-4 py-2 text-sm ${
+                        `block pl-4 py-3 text-lg ${
                           isActive 
                             ? 'text-[#45702D] bg-green-50' 
                             : 'text-gray-600 hover:bg-green-50 hover:text-[#45702D]'
-                        }`
+                        } rounded-md`
                       }
                     >
                       {link.name}
@@ -255,9 +266,9 @@ const Navbar = () => {
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
                   className={({ isActive }) =>
-                    `block px-4 py-2 text-sm font-medium ${
+                    `block px-4 py-3 my-2 text-lg font-medium ${
                       isActive ? 'text-[#45702D] bg-green-50' : 'text-gray-700 hover:bg-green-50 hover:text-[#45702D]'
-                    }`
+                    } rounded-md`
                   }
                 >
                   {item.name}
@@ -267,15 +278,15 @@ const Navbar = () => {
 
             {/* Contact info in mobile menu */}
             <div className="border-t p-4 bg-gray-50">
-              <div className="space-y-2 text-sm text-gray-600">
-                <a href="tel:+254722407034" className="flex items-center">
-                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <div className="space-y-3 text-base text-gray-600">
+                <a href="tel:+254722407034" className="flex items-center py-2">
+                  <svg className="w-5 h-5 mr-3 text-[#45702D]" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.21-.502l4.435.74a1 1 0 01.684.949V19a1 1 0 01-1 1h-1C7.82 18 2 12.18 2 5V3z" />
                   </svg>
                   +254 722407034
                 </a>
-                <a href="mailto:info@sudi.or.ke" className="flex items-center">
-                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <a href="mailto:info@sudi.or.ke" className="flex items-center py-2">
+                  <svg className="w-5 h-5 mr-3 text-[#45702D]" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                   </svg>
@@ -285,14 +296,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
-        {/* Semi-transparent overlay */}
-        {isMenuOpen && (
-          <div 
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm lg:hidden"
-            onClick={() => setIsMenuOpen(false)}
-          />
-        )}
       </nav>
     </header>
   )
