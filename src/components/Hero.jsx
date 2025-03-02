@@ -5,10 +5,10 @@ const Hero = () => {
   return (
     <>
       {/* Hero section with container padding */}
-      <section className="relative w-full min-h-[90vh] mt-[72px] px-4 md:px-8 lg:px-12">
+      <section className="relative w-full min-h-[90vh] mt-[72px] px-0">
         {/* Background Image with Overlay and rounded corners */}
         <div 
-          className="absolute inset-0 w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden mx-auto my-4 max-w-[1800px]"
+          className="absolute inset-x-4 md:inset-x-8 lg:inset-x-12 inset-y-0 rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden my-4 max-w-[100%]"
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url(${bgHero})`,
             backgroundSize: 'cover',
@@ -19,15 +19,15 @@ const Hero = () => {
 
         {/* Content */}
         <div className="relative z-10 h-full flex flex-col justify-center">
-          <div className="container mx-auto px-5 md:px-12 py-20">
-            <div className="max-w-3xl">
+          <div className="container mx-auto px-6 py-20 max-w-full">
+            <div className="max-w-3xl mx-auto">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8">
                 <span className="block text-white drop-shadow-md mb-3">EMPOWERING</span>
                 <span className="block text-white drop-shadow-md mb-3">COMMUNITIES FOR A</span>
                 <span className="block text-[#F9B872] drop-shadow-md">BETTER TOMORROW</span>
               </h1>
               
-              <p className="text-lg sm:text-xl text-white mb-12 max-w-2xl drop-shadow-md leading-relaxed">
+              <p className="text-lg sm:text-xl text-white mb-12 max-w-full drop-shadow-md leading-relaxed">
                 Supporting sustainable development and peace in Garissa County through community-driven initiatives
               </p>
 
@@ -76,17 +76,17 @@ const Hero = () => {
 
       {/* About section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-5 md:px-8 lg:px-12">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-full">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">
               About <span className="text-[#C17F59]">SUDI</span>
             </h2>
             <div className="space-y-8">
-              <p className="text-base md:text-lg text-gray-600 leading-relaxed px-4 md:px-0">
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed px-2 md:px-0">
                 SUDI is a local non-governmental, non-profit organization with its headquarter in Garissa County. 
                 SUDI was registered as an NGO in July 2013 by the Government of Kenya under the NGO Coordination Act 1990.
               </p>
-              <p className="text-base md:text-lg text-gray-600 leading-relaxed px-4 md:px-0">
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed px-2 md:px-0">
                 SUDI values the local existing potential and resources from the communities and aims at strengthening peace 
                 while alleviating poverty among the rural poor, through the use of local resources.
               </p>
