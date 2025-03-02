@@ -55,16 +55,11 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll)
     
-    // Prevent body scroll when menu is open
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'auto'
-    }
+    // Remove the body overflow hidden to allow scrolling
+    // document.body.style.overflow = 'auto'
     
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      document.body.style.overflow = 'auto'
     }
   }, [isMenuOpen])
 
@@ -195,6 +190,7 @@ const Navbar = () => {
           className={`fixed inset-y-0 right-0 w-[250px] bg-white z-50 transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           } shadow-xl`}
+          style={{ pointerEvents: isMenuOpen ? 'auto' : 'none' }}
         >
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between p-4 border-b">
@@ -297,11 +293,12 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Semi-transparent overlay */}
+        {/* Semi-transparent overlay that allows scrolling */}
         {isMenuOpen && (
           <div 
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm lg:hidden z-40"
+            className="fixed inset-0 bg-black/20 lg:hidden z-40"
             onClick={() => setIsMenuOpen(false)}
+            style={{ pointerEvents: 'auto' }}
           />
         )}
       </nav>
