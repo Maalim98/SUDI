@@ -23,36 +23,37 @@ const Hero = () => {
 
         {/* Content - centered with proper spacing */}
         <div className="relative z-10 h-full flex flex-col justify-center">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto text-center">
-              {/* Clean, centered heading */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+              {/* Mobile-optimized heading */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
                 <span className="block text-white mb-1">EMPOWERING</span>
-                <span className="block text-white mb-1">COMMUNITIES FOR A</span>
+                <span className="block text-white mb-1">COMMUNITIES FOR</span>
+                <span className="block text-white mb-1">A</span>
                 <span className="block text-[#F9B872]">BETTER TOMORROW</span>
               </h1>
               
-              {/* Clean description */}
-              <p className="text-lg sm:text-xl text-white mb-8 leading-relaxed">
+              {/* Mobile-optimized description */}
+              <p className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 leading-relaxed px-2">
                 Supporting sustainable development and peace in Garissa County through community-driven initiatives
               </p>
 
-              {/* Centered CTA buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {/* Full-width buttons on mobile */}
+              <div className="flex flex-col gap-3 sm:gap-4 mt-2">
                 <Link
                   to="/about-us"
-                  className="bg-[#D4813B] text-white px-8 py-3
+                  className="bg-[#D4813B] text-white py-3 sm:py-3
                     rounded-md text-lg font-semibold hover:bg-[#B36B2D] 
-                    transition duration-300 text-center w-full sm:w-auto"
+                    transition duration-300 text-center w-full"
                 >
                   Learn More
                 </Link>
                 <Link
                   to="/contact"
                   className="bg-white/10 border border-white
-                    text-white px-8 py-3 rounded-md text-lg font-semibold 
+                    text-white py-3 sm:py-3 rounded-md text-lg font-semibold 
                     hover:bg-white/20 transition duration-300 text-center
-                    w-full sm:w-auto"
+                    w-full"
                 >
                   Get Involved
                 </Link>
@@ -63,7 +64,7 @@ const Hero = () => {
       </section>
 
       {/* About section - matching the screenshot */}
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
