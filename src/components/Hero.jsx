@@ -4,11 +4,11 @@ import bgHero from '/src/assets/images/bg-hero.jpg'
 const Hero = () => {
   return (
     <>
-      {/* Hero section */}
-      <section className="relative w-full min-h-[90vh] mt-[72px]">
-        {/* Background Image with Overlay */}
+      {/* Hero section with container padding */}
+      <section className="relative w-full min-h-[90vh] mt-[72px] px-4 md:px-8 lg:px-12">
+        {/* Background Image with Overlay and rounded corners */}
         <div 
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden mx-auto my-4 max-w-[1800px]"
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url(${bgHero})`,
             backgroundSize: 'cover',
@@ -19,7 +19,7 @@ const Hero = () => {
 
         {/* Content */}
         <div className="relative z-10 h-full flex flex-col justify-center">
-          <div className="container mx-auto px-5 md:px-8 py-20">
+          <div className="container mx-auto px-5 md:px-12 py-20">
             <div className="max-w-3xl">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8">
                 <span className="block text-white drop-shadow-md mb-3">EMPOWERING</span>
@@ -76,7 +76,7 @@ const Hero = () => {
 
       {/* About section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-5 md:px-8">
+        <div className="container mx-auto px-5 md:px-8 lg:px-12">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">
               About <span className="text-[#C17F59]">SUDI</span>
