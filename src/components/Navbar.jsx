@@ -190,11 +190,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Compact Mobile Menu - Full screen overlay to prevent blurry background */}
+        {/* Compact Mobile Menu - Side panel that slides from right */}
         <div 
-          className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out ${
+          className={`fixed inset-y-0 right-0 w-[250px] bg-white z-50 transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          } shadow-xl`}
         >
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between p-4 border-b">
@@ -296,6 +296,14 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+
+        {/* Semi-transparent overlay */}
+        {isMenuOpen && (
+          <div 
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm lg:hidden z-40"
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
       </nav>
     </header>
   )
