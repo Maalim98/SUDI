@@ -16,6 +16,7 @@ import CoreValues from './pages/CoreValues'
 import Objectives from './pages/Objectives'
 import Programs from './pages/Programs'
 import Governance from './pages/Governance'
+import ContactUs from './pages/ContactUs'
 import './App.css'
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/objectives" element={<Objectives />} />
           <Route path="/programs" element={<Programs />} />
           <Route path="/governance" element={<Governance />} />
+          <Route path="/contact" element={<ContactUs />} />
         </Route>
       </Routes>
     </>
