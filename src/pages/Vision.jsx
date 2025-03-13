@@ -1,3 +1,5 @@
+import visionImage from '../assets/images/vision.jpg';
+
 const Vision = () => {
   return (
     <div className="pt-48 pb-20">
@@ -9,7 +11,7 @@ const Vision = () => {
         {/* Hero Image */}
         <div className="max-w-5xl mx-auto mb-12 rounded-lg overflow-hidden shadow-xl">
           <img 
-            src="/src/assets/images/vision.jpg" 
+            src={visionImage} 
             alt="SUDI Vision" 
             className="w-full h-[400px] object-cover object-center"
           />
