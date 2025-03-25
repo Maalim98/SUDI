@@ -1,15 +1,18 @@
-import Hero from '../components/Hero'
-import Programs from '../components/Programs'
-
+import React from 'react';
+import Hero from '../components/Hero';
+import ImpactStats from '../components/ImpactStats';
+import Partners from '../components/Partners';
+import Testimonials from '../components/Testimonials';
 
 const Home = () => {
   return (
-    <main>
+    <div>
       <Hero />
-      <Programs />
-      
-    </main>
-  )
-}
+      <ImpactStats />
+      <Partners />
+      <Testimonials />
+    </div>
+  );
+};
 
-export default Home 
+export default Home; 

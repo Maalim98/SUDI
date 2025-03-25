@@ -86,46 +86,46 @@ const Hero = () => {
       </section>
 
       {/* Responsive About section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-gray-50">
+      <section className="py-16 sm:py-20 md:py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Responsive header */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">
-              About <span className="text-[#45702D]">SUDI</span>
-            </h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#45702D]">
+                About <span className="text-[#2D572C]">SUDI</span>
+              </h2>
+              <div className="w-24 h-1 bg-[#F9B872] mx-auto mt-4"></div>
+            </div>
             
-            {/* Responsive content */}
-            <div className="mb-8 sm:mb-10 md:mb-12">
-              <p className="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-6">
+            <div className="space-y-8 text-center">
+              <p className="text-gray-700 text-xl leading-relaxed">
                 SUDI is a local non-governmental organization dedicated to transforming lives 
                 through sustainable development initiatives in Garissa County.
               </p>
-              <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
+              
+              <p className="text-gray-600 text-lg leading-relaxed">
                 We implement impactful programs in education, healthcare, environmental conservation, 
                 and economic empowerment, working closely with local communities and international partners 
                 to create lasting positive change.
               </p>
-            </div>
-
-            {/* Responsive CTA */}
-            <div className="mt-8 sm:mt-10 md:mt-12">
-              <Link 
-                to="/about-us" 
-                className="inline-flex items-center justify-center bg-[#45702D] text-white 
-                  py-3 sm:py-4 px-8 sm:px-10 rounded-full text-base sm:text-lg font-medium 
-                  hover:bg-[#385c25] transition-all duration-300 group shadow-md sm:shadow-lg 
-                  hover:shadow-lg sm:hover:shadow-xl"
-              >
-                Learn More
-                <svg 
-                  className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transform transition-transform group-hover:translate-x-1" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
+              
+              <div className="mt-12">
+                <Link 
+                  to="/about-us" 
+                  className="group inline-flex items-center justify-center bg-[#45702D] text-white 
+                    py-3 px-8 rounded-md text-base font-medium 
+                    hover:bg-[#385c25] transition-all duration-300"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
+                  Learn More
+                  <svg 
+                    className="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
